@@ -1,20 +1,24 @@
 #
 # Conditional build:
 %bcond_with	qt		# use Qt instead of GdkPixbuf for media extraction
+%bcond_with	qt4		# use Qt4 instead of Qt5 (if with_qt; only when Qt5 is not installed)
 %bcond_without	static_libs	# static library build
 %bcond_without	vala		# Vala binding
 #
 Summary:	Media art extraction and cache management library
 Summary(pl.UTF-8):	Biblioteka do wydobywania okładek i zarządzania ich pamięcią podręczną
 Name:		libmediaart
-Version:	0.1.0
+Version:	0.2.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libmediaart/0.1/%{name}-%{version}.tar.xz
-# Source0-md5:	c9b873f63ea621f2ae339163782b3f79
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libmediaart/0.2/%{name}-%{version}.tar.xz
+# Source0-md5:	88615fa9c948a53d1f81250a73f40767
 URL:		https://github.com/curlybeast/libmediaart
-%{?with_qt:BuildRequires:	QtGui-devel >= 4.7.1}
+%if %{with qt}
+%{!?with_qt4:BuildRequires:	Qt5Gui-devel >= 5.0.0}
+%{?with_qt4:BuildRequires:	QtGui-devel >= 4.7.1}
+%endif
 %{!?with_qt:BuildRequires:	gdk-pixbuf2-devel >= 2.12.0}
 BuildRequires:	glib2-devel >= 1:2.35.1
 BuildRequires:	gobject-introspection-devel >= 1.30.0
@@ -22,14 +26,15 @@ BuildRequires:	gtk-doc >= 1.8
 %{?with_qt:BuildRequires:	libstdc++-devel}
 BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	tracker-devel >= 0.16.0
 %{?with_vala:BuildRequires:	vala >= 2:0.16}
 BuildRequires:	xz
 BuildRequires:	zlib-devel
+%if %{with qt}
+%{!?with_qt:Requires:	Qt5Gui >= 5.0.0}
 %{?with_qt:Requires:	QtGui >= 4.7.1}
+%endif
 %{!?with_qt:Requires:	gdk-pixbuf2 >= 2.12.0}
 Requires:	glib2 >= 1:2.35.1
-Requires:	tracker-libs >= 0.16.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,10 +49,12 @@ Summary:	Header files for libmediaart library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libmediaart
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+%if %{with qt}
+%{!?with_qt:Requires:	Qt5Gui-devel >= 5.0.0}
 %{?with_qt:Requires:	QtGui-devel >= 4.7.1}
+%endif
 %{!?with_qt:Requires:	gdk-pixbuf2-devel >= 2.12.0}
 Requires:	glib2-devel >= 1:2.35.1
-Requires:	tracker-devel >= 0.16.0
 Requires:	zlib-devel
 
 %description devel
@@ -110,7 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 # obsoleted by pkg-config
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libmediaart-0.2.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libmediaart-1.0.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -121,21 +128,21 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS
-%attr(755,root,root) %{_libdir}/libmediaart-0.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmediaart-0.2.so.0
-%{_libdir}/girepository-1.0/MediaArt-0.2.typelib
+%attr(755,root,root) %{_libdir}/libmediaart-1.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmediaart-1.0.so.0
+%{_libdir}/girepository-1.0/MediaArt-1.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmediaart-0.2.so
-%{_includedir}/libmediaart-0.2
-%{_datadir}/gir-1.0/MediaArt-0.2.gir
-%{_pkgconfigdir}/libmediaart-0.2.pc
+%attr(755,root,root) %{_libdir}/libmediaart-1.0.so
+%{_includedir}/libmediaart-1.0
+%{_datadir}/gir-1.0/MediaArt-1.0.gir
+%{_pkgconfigdir}/libmediaart-1.0.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libmediaart-0.2.a
+%{_libdir}/libmediaart-1.0.a
 %endif
 
 %files apidocs
@@ -145,5 +152,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with vala}
 %files -n vala-libmediaart
 %defattr(644,root,root,755)
-%{_datadir}/vala/vapi/libmediaart-0.2.vapi
+%{_datadir}/vala/vapi/libmediaart-1.0.vapi
 %endif
