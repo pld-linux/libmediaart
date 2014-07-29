@@ -8,19 +8,19 @@
 Summary:	Media art extraction and cache management library
 Summary(pl.UTF-8):	Biblioteka do wydobywania okładek i zarządzania ich pamięcią podręczną
 Name:		libmediaart
-Version:	0.4.0
+Version:	0.5.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libmediaart/0.4/%{name}-%{version}.tar.xz
-# Source0-md5:	a921f28372d965b914edc105b283c095
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libmediaart/0.5/%{name}-%{version}.tar.xz
+# Source0-md5:	cbb0eea1cf4cda40c1e8d838698a08ec
 URL:		https://github.com/curlybeast/libmediaart
 %if %{with qt}
 %{!?with_qt4:BuildRequires:	Qt5Gui-devel >= 5.0.0}
 %{?with_qt4:BuildRequires:	QtGui-devel >= 4.7.1}
 %endif
 %{!?with_qt:BuildRequires:	gdk-pixbuf2-devel >= 2.12.0}
-BuildRequires:	glib2-devel >= 1:2.35.1
+BuildRequires:	glib2-devel >= 1:2.38.0
 BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gtk-doc >= 1.8
 %{?with_qt:BuildRequires:	libstdc++-devel}
@@ -34,7 +34,7 @@ BuildRequires:	zlib-devel
 %{?with_qt:Requires:	QtGui >= 4.7.1}
 %endif
 %{!?with_qt:Requires:	gdk-pixbuf2 >= 2.12.0}
-Requires:	glib2 >= 1:2.35.1
+Requires:	glib2 >= 1:2.38.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -54,7 +54,7 @@ Requires:	%{name} = %{version}-%{release}
 %{?with_qt:Requires:	QtGui-devel >= 4.7.1}
 %endif
 %{!?with_qt:Requires:	gdk-pixbuf2-devel >= 2.12.0}
-Requires:	glib2-devel >= 1:2.35.1
+Requires:	glib2-devel >= 1:2.38.0
 Requires:	zlib-devel
 
 %description devel
