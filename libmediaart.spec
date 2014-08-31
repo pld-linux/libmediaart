@@ -8,12 +8,12 @@
 Summary:	Media art extraction and cache management library
 Summary(pl.UTF-8):	Biblioteka do wydobywania okładek i zarządzania ich pamięcią podręczną
 Name:		libmediaart
-Version:	0.5.0
+Version:	0.6.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libmediaart/0.5/%{name}-%{version}.tar.xz
-# Source0-md5:	cbb0eea1cf4cda40c1e8d838698a08ec
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libmediaart/0.6/%{name}-%{version}.tar.xz
+# Source0-md5:	8bd508886c47397925771e2717c80d52
 URL:		https://github.com/curlybeast/libmediaart
 %if %{with qt}
 %{!?with_qt4:BuildRequires:	Qt5Gui-devel >= 5.0.0}
