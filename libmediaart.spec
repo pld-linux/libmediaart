@@ -9,7 +9,7 @@ Summary:	Media art extraction and cache management library
 Summary(pl.UTF-8):	Biblioteka do wydobywania okładek i zarządzania ich pamięcią podręczną
 Name:		libmediaart
 Version:	0.7.0
-Release:	3
+Release:	4
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libmediaart/0.7/%{name}-%{version}.tar.xz
@@ -79,6 +79,9 @@ Statyczna biblioteka libmediaart.
 Summary:	libmediaart API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libmediaart
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API documentation for libmediaart library.
