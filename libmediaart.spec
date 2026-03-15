@@ -131,13 +131,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS
-%attr(755,root,root) %{_libdir}/libmediaart-1.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmediaart-1.0.so.0
+%{_libdir}/libmediaart-1.0.so.*.*.*
+%ghost %{_libdir}/libmediaart-1.0.so.0
 %{_libdir}/girepository-1.0/MediaArt-1.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmediaart-1.0.so
+%{_libdir}/libmediaart-1.0.so
 %{_includedir}/libmediaart-1.0
 %{_datadir}/gir-1.0/MediaArt-1.0.gir
 %{_pkgconfigdir}/libmediaart-1.0.pc
