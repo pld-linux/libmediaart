@@ -8,6 +8,7 @@
 Summary:	Media art extraction and cache management library
 Summary(pl.UTF-8):	Biblioteka do wydobywania okładek i zarządzania ich pamięcią podręczną
 Name:		libmediaart
+# Keep 0.X software line here (see libmediaart2.spec for newer versions)
 Version:	0.7.0
 Release:	4
 License:	LGPL v2.1+
