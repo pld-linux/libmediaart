@@ -13,7 +13,7 @@ Version:	0.7.0
 Release:	5
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libmediaart/0.7/%{name}-%{version}.tar.xz
+Source0:	https://download.gnome.org/sources/libmediaart/0.7/%{name}-%{version}.tar.xz
 # Source0-md5:	1a44933d4cd0064e3c76d8d0ddacddc9
 URL:		https://github.com/curlybeast/libmediaart
 %if %{with qt}
