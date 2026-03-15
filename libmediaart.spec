@@ -10,7 +10,7 @@ Summary(pl.UTF-8):	Biblioteka do wydobywania okładek i zarządzania ich pamięc
 Name:		libmediaart
 # Keep 0.X software line here (see libmediaart2.spec for newer versions)
 Version:	0.7.0
-Release:	4
+Release:	5
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libmediaart/0.7/%{name}-%{version}.tar.xz
